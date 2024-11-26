@@ -1,5 +1,14 @@
 let addTodo = document.querySelector(".new-todo");
-let body = document.querySelector("body");
+let checked = document.querySelector("input[type='checkbox']");
+checked.addEventListener("change", function (e) {
+    console.log(e.target.checked);
+    if (e.target.checked) {
+        checked.nextElementSibling.style.textDecorationLine ="line-through";
+        // console.log(checked.nextElementSibling);
+    } else {
+        checked.nextElementSibling.style.textDecorationLine = '';
+    }
+})
 
 addTodo.addEventListener("click", (e) => {
     e.preventDefault();
@@ -31,3 +40,5 @@ addTodo.addEventListener("click", (e) => {
     // Append the newTodo to the body (or any other container)
     document.body.appendChild(newTodo);
 });
+
+
