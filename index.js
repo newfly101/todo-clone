@@ -1,5 +1,5 @@
 let addTodo = document.querySelector(".new-todo");
-let checked = document.querySelector("input[type='checkbox']");
+let todoList = document.querySelector(".add-todos");
 
 
 addTodo.addEventListener("click", (e) => {
@@ -33,15 +33,29 @@ addTodo.addEventListener("click", (e) => {
     document.body.appendChild(newTodo);
 });
 
-// 체크되면 취소선 긋기 + 배경화면 색상 흐려지기
-checked.addEventListener("change", function (e) {
-    // console.log(e.target.checked);
-    if (e.target.checked) {
-        e.target.nextElementSibling.style.textDecorationLine ="line-through";
-        e.target.parentElement.style.opacity = "0.6";
-    } else {
-        checked.nextElementSibling.style.textDecorationLine = '';
-        e.target.parentElement.style.opacity = "1";
+// event bubbling
+// checked => change
+document.body.onchange = (e) => {
+    console.log(e.target);
+    e.preventDefault();
+    if (e.target.type === 'checkbox' ) {
+        if (e.target.checked) {
+            e.target.nextElementSibling.style.textDecorationLine ="line-through";
+            e.target.parentElement.style.opacity = "0.6";
+        } else {
+            e.target.nextElementSibling.style.textDecorationLine = '';
+            e.target.parentElement.style.opacity = "1";
+        }
     }
-})
+}
+// todoList.addEventListener("click", function (e) {
+//     console.log(e.target);
+//     if (e.target.checked) {
+//         checked.nextElementSibling.style.textDecorationLine ="line-through";
+//         e.target.parentElement.style.opacity = "0.6";
+//     } else {
+//         checked.nextElementSibling.style.textDecorationLine = '';
+//         e.target.parentElement.style.opacity = "1";
+//     }
+// })
 
