@@ -1,6 +1,4 @@
 let addTodo = document.querySelector(".new-todo");
-let todoList = document.querySelector(".add-todos");
-
 
 addTodo.addEventListener("click", (e) => {
     e.preventDefault();
@@ -37,25 +35,40 @@ addTodo.addEventListener("click", (e) => {
 // checked => change
 document.body.onchange = (e) => {
     console.log(e.target);
-    e.preventDefault();
-    if (e.target.type === 'checkbox' ) {
+    if (e.target.type === 'checkbox') {
         if (e.target.checked) {
-            e.target.nextElementSibling.style.textDecorationLine ="line-through";
+            e.target.nextElementSibling.style.textDecorationLine = "line-through";
             e.target.parentElement.style.opacity = "0.6";
         } else {
             e.target.nextElementSibling.style.textDecorationLine = '';
             e.target.parentElement.style.opacity = "1";
         }
     }
-}
-// todoList.addEventListener("click", function (e) {
-//     console.log(e.target);
-//     if (e.target.checked) {
-//         checked.nextElementSibling.style.textDecorationLine ="line-through";
-//         e.target.parentElement.style.opacity = "0.6";
-//     } else {
-//         checked.nextElementSibling.style.textDecorationLine = '';
-//         e.target.parentElement.style.opacity = "1";
-//     }
-// })
+};
 
+document.body.onclick = (e) => {
+    // checkbox onclick 방지
+    if (e.target.type === 'checkbox') return;
+    // console.log(e.target);
+
+    // ** tagName 은 대문자로 표기
+    if (e.target.tagName === 'IMG') {
+        if (e.target.alt === 'modify') {
+            e.target.previousElementSibling.focus();
+        }
+        if (e.target.alt === 'delete') {
+            e.target.parentElement.remove();
+        }
+    }
+};
+
+document.body.onkeyup = (e) => {
+    if (e.target.type === 'text') {
+        if (e.code === 'Enter') {
+            const inputValue = e.target.value;
+            // console.log(`저장된 값 : ${inputValue}`);
+            e.target.blur();
+        }
+    }
+
+}
