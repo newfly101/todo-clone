@@ -1,14 +1,6 @@
 let addTodo = document.querySelector(".new-todo");
 let checked = document.querySelector("input[type='checkbox']");
-checked.addEventListener("change", function (e) {
-    console.log(e.target.checked);
-    if (e.target.checked) {
-        checked.nextElementSibling.style.textDecorationLine ="line-through";
-        // console.log(checked.nextElementSibling);
-    } else {
-        checked.nextElementSibling.style.textDecorationLine = '';
-    }
-})
+
 
 addTodo.addEventListener("click", (e) => {
     e.preventDefault();
@@ -41,4 +33,15 @@ addTodo.addEventListener("click", (e) => {
     document.body.appendChild(newTodo);
 });
 
+// 체크되면 취소선 긋기 + 배경화면 색상 흐려지기
+checked.addEventListener("change", function (e) {
+    // console.log(e.target.checked);
+    if (e.target.checked) {
+        e.target.nextElementSibling.style.textDecorationLine ="line-through";
+        e.target.parentElement.style.opacity = "0.6";
+    } else {
+        checked.nextElementSibling.style.textDecorationLine = '';
+        e.target.parentElement.style.opacity = "1";
+    }
+})
 
