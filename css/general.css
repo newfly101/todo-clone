@@ -1,0 +1,24 @@
+body {
+    padding: 1.5em;
+    background-color: #e27680;
+}
+.todo-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+.todo-header > span {
+    /*text-decoration-line: underline;*/
+    padding-bottom: 5px;
+    border-bottom: 2px solid white;
+}
+h1 {
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    font-weight: bold;
+    display: flex;
+}
