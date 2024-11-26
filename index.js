@@ -34,7 +34,7 @@ addTodo.addEventListener("click", (e) => {
 // event bubbling
 // checked => change
 document.body.onchange = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
     if (e.target.type === 'checkbox') {
         if (e.target.checked) {
             e.target.nextElementSibling.style.textDecorationLine = "line-through";
@@ -65,7 +65,7 @@ document.body.onclick = (e) => {
 document.body.onkeyup = (e) => {
     if (e.target.type === 'text') {
         if (e.code === 'Enter') {
-            const inputValue = e.target.value;
+            // const inputValue = e.target.value;
             // console.log(`저장된 값 : ${inputValue}`);
             e.target.blur();
         }
